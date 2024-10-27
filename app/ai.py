@@ -355,5 +355,3 @@ class AIPlayer(Player):
             return 'all-in'
         else:
             return 'fold'  # Default action if none matched
-
-    # Additional methods for AI behavior can be added here
