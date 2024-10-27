@@ -3,7 +3,7 @@
 from typing import Any, Dict, List, Optional
 from .card import Card
 from .data_collector import DataCollector
-from .hand_evaluator import HandEvaluator  # Import to evaluate hand strength
+from .hand_evaluator import HandEvaluator
 
 class Player:
     """
@@ -45,7 +45,7 @@ class Player:
 
         self.data_collector = data_collector
 
-        # Attributes for calculating aggression factor and bluff probability
+        # Attributes for calculating aggression factor and bluff probability for human players
         self.action_history: List[Dict[str, Any]] = []
         self.total_aggressive_actions: int = 0
         self.total_actions: int = 0
@@ -102,7 +102,7 @@ class Player:
         """
         Player chooses to check (no action required).
         """
-        pass  # No action needed for checking
+        pass
 
     def call(self, amount: float) -> None:
         """
@@ -265,8 +265,6 @@ class Player:
         Returns:
             str: The action chosen by the player.
         """
-        # For a human player, this would involve input from the user interface.
-        # For the purpose of data collection, we assume the action is provided.
         action = input(f"{self.name}, enter your action (fold, check, call, raise, all-in): ").lower()
         amount = 0.0
         if 'raise' in action:

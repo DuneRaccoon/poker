@@ -1,4 +1,5 @@
-# card.py
+from typing import Literal
+
 
 class Card:
     SUITS = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
@@ -8,7 +9,11 @@ class Card:
         'Jack': 11, 'Queen': 12, 'King': 13, 'Ace': 14
     }
 
-    def __init__(self, suit, rank):
+    def __init__(
+        self, 
+        suit: Literal['Hearts', 'Diamonds', 'Clubs', 'Spades'], 
+        rank: Literal['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+    ):
         self.suit = suit
         self.rank = rank
 

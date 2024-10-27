@@ -36,17 +36,15 @@ class HandEvaluator:
         Returns:
             Tuple[int, List[int]]: A tuple containing the hand rank value and a list of highest card ranks for tie-breaking.
         """
-        # Combine player hand and community cards
+        
+        # cmbine player hand and community cards
         all_cards: List[Card] = hand + community_cards
-
-        # Generate all possible 5-card combinations
-        possible_hands = combinations(all_cards, 5)
 
         best_rank: int = 0
         best_hand: Optional[List[int]] = None
 
-        # Iterate through all possible 5-card hands to find the best one
-        for possible_hand in possible_hands:
+        # iterate over all possible 5-card hands to find the best one
+        for possible_hand in combinations(all_cards, 5):
             rank, highest_cards = HandEvaluator.evaluate_five_card_hand(possible_hand)
             # Compare hands based on rank and then highest cards
             if rank > best_rank or (rank == best_rank and highest_cards > best_hand):
@@ -66,9 +64,11 @@ class HandEvaluator:
         Returns:
             Tuple[int, List[int]]: A tuple containing the hand rank value and a list of highest card ranks for tie-breaking.
         """
+        
         # Extract ranks and suits
         ranks: List[int] = [Card.RANKS[card.rank] for card in cards]
         suits: List[str] = [card.suit for card in cards]
+        
         rank_counts: Counter = Counter(ranks)
         suit_counts: Counter = Counter(suits)
 
